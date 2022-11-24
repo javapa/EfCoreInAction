@@ -10,10 +10,10 @@ namespace MyFirstEfCoreApp
         public static void Main(string[] args)
         {
             Console.WriteLine(
-                "Commands: l (list), u (change url), r (resetDb) and e (exit) - add -l to first two for logs");
-            Console.Write(
-                "Checking if database exists... ");
-            Console.WriteLine(Commands.WipeCreateSeed(true) ? "created database and seeded it." : "it exists.");
+                $"Commands:{Environment.NewLine}\tl (list){Environment.NewLine}\tu (change url){Environment.NewLine}\tr (resetDb){Environment.NewLine}\te (exit){Environment.NewLine}{Environment.NewLine}Add -l to first two commands if you want to see logs");
+            Console.WriteLine(
+                $"{Environment.NewLine}Checking if database exists... ");
+            Console.WriteLine(Commands.WipeCreateSeed(true) ? "Created database and seeded it." : "It exists.");
             do
             {
                 Console.Write("> ");
@@ -37,6 +37,9 @@ namespace MyFirstEfCoreApp
                         break;
                     case "e":
                         return;
+                    case "cls":
+                        Console.Clear();
+                        break;
                     default: 
                         Console.WriteLine("Unknown command.");
                         break;

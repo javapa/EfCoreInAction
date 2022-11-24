@@ -24,8 +24,8 @@ namespace MyFirstEfCoreApp
                 {
                     var webUrl = book.Author.WebUrl ?? "- no web url given -";
                     Console.WriteLine($"{book.Title} by {book.Author.Name}");
-                    Console.WriteLine("     Published on " +
-                        $"{book.PublishedOn:dd-MMM-yyyy}. {webUrl}");
+                    Console.WriteLine($"Published on {book.PublishedOn:dd-MMM-yyyy}. {webUrl}");
+                    Console.WriteLine();
                 }
             }
         }
@@ -48,7 +48,8 @@ namespace MyFirstEfCoreApp
 
                 book.Author.WebUrl = newWebUrl;                    //#D
                 db.SaveChanges();                                  //#E
-                Console.WriteLine("... SavedChanges called.");
+                Console.WriteLine("SavedChanges called...");
+                Console.WriteLine();
             }
 
             ListAll();                                             //#F
@@ -79,11 +80,9 @@ namespace MyFirstEfCoreApp
                     var webUrl = book.Author.WebUrl == null
                         ? "- no web url given -"
                         : book.Author.WebUrl;
-                    Console.WriteLine(
-                        $"{book.Title} by {book.Author.Name}");
-                    Console.WriteLine("     " +
-                        $"Published on {book.PublishedOn:dd-MMM-yyyy}" +
-                        $". {webUrl}");
+                    Console.WriteLine($"{book.Title} by {book.Author.Name}");
+                    Console.WriteLine($"Published on {book.PublishedOn:dd-MMM-yyyy}. {webUrl}");
+                    Console.WriteLine();
                 }
             }
             Console.WriteLine("---------- LOGS ------------------");
@@ -110,13 +109,15 @@ namespace MyFirstEfCoreApp
                     .Single(b => b.Title == "Quantum Networking");
                 book.Author.WebUrl = newWebUrl;
                 db.SaveChanges();
-                Console.Write("... SavedChanges called.");
+                Console.WriteLine("SavedChanges called.");
             }
+            Console.WriteLine();
             Console.WriteLine("---------- LOGS ------------------");
             foreach (var log in logs)
             {
                 Console.WriteLine(log);
             }
+            Console.WriteLine();
         }
 
         /// <summary>
